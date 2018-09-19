@@ -23,5 +23,5 @@ services:
     - POSTGRES_PASSWORD=admin
     - POSTGRES_USER=admin
     command: >
-      bash -c " cd /psql \
+      bash -c " cd /sql \
         && ls"
