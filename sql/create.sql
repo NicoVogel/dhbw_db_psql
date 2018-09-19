@@ -1,6 +1,21 @@
-drop database if exists demo;
-create database demo;
-use demo;
+--drop all tables
+drop table if exists hatmedikament;
+drop table if exists behandlung;
+drop table if exists eingesetzt;
+drop table if exists wechselwirkung;
+drop table if exists medikament;
+drop table if exists hatsymptom;
+drop table if exists krankheit;
+drop table if exists symptom;
+drop table if exists patient;
+drop table if exists krankenkasse;
+drop table if exists krankenpfleger;
+drop table if exists ausbildung;
+drop table if exists arzt;
+drop table if exists fachgebiet;
+drop table if exists angestellter;
+drop table if exists adresse;
+drop table if exists person;
 
 -- create tables
 create table person(

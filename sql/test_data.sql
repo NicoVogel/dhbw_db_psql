@@ -1,6 +1,3 @@
-use demo;
-
-
 -- persons
 insert into person values (DEFAULT, '1974-11-11', 'l', 'Ramirez', 'Colin ', 'a');
 insert into person values (DEFAULT, '1975-11-14', 'l', 'Parker', 'Elsa ', 'a');
