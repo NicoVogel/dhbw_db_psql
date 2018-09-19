@@ -3,6 +3,7 @@ var app = express();
 const psql = require('pg')
 const connectionString = "postgres://admin:admin@localhost:5432/demo"
 const client = new psql.Client(connectionString);
+client.connect();
 
 
 
