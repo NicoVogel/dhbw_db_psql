@@ -17,8 +17,6 @@ services:
     - "5432:5432"
     volumes:
     - ./sql:/docker-entrypoint-initdb.d
-    - ./sql_data:/var/lib/postgresql/data
-    - ./sql_log/:/var/log
     links:
     - node
     environment:
