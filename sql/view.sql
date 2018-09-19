@@ -1,3 +1,5 @@
+use demo;
+
 -- drop views if exist
 drop view if exists arzt_overview;
 drop view if exists fachbereich_overview;
