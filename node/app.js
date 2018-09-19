@@ -36,7 +36,7 @@ function fetchAllOfType(res, type){
        sql : 'SELECT * FROM ' + type
     }
     console.log("query = " + options.sql);
-    executeQuery(options, createViewTable);
+    executeQuery(options, res, createViewTable);
 }
 
 
