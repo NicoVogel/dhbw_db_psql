@@ -1,5 +1,4 @@
 var express = require('express');
-var dateFormat = require('dateformat');
 var app = express();
 app.use(express.static('public'));
 const psql = require('pg')
@@ -10,7 +9,7 @@ client.connect();
 
 
 app.get('/', function (req, res) {
-    res.send('die views sind unter der url /v1 bis /v4 zu finden');
+    res.send('<link rel="stylesheet" href="/mui.min.css" type="text/css"><h1>Die views sind unter der url /v1 bis /v4 zu finden</h1>');
 });
 
 app.get('/v1', function (req, res) {
@@ -72,9 +71,6 @@ const createViewTable = function (res, result) {
         res.write("<tr>");
         for (let j = 0; j < names.length; j++) {
             let val = row[names[j].name];
-            if (names[j].format = 'date') {
-                val = dateFormat(Date.parse(val), "dd.mm.yyyy");
-            }
             res.write("<td><label>" + val + "</label></td>");
         }
         res.write("</tr>");

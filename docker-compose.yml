@@ -10,7 +10,6 @@ services:
     - ./node:/node
     command: >
       bash -c " cd /node \
-        && ls \
         && npm install \
         && nodemon app.js"
   psql:
