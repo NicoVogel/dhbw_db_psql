@@ -7,7 +7,7 @@ services:
     volumes:
     - ./node:/node
     command: >
-      bash -c " cd /node
+      bash -c " cd /node \
         && ls \
         && npm install \
         && nodemon app.js"
@@ -23,5 +23,5 @@ services:
     - POSTGRES_PASSWORD=admin
     - POSTGRES_USER=admin
     command: >
-      bash -c " cd /psql
+      bash -c " cd /psql \
         && ls"
