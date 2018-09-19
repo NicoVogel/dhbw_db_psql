@@ -48,30 +48,31 @@ function executeQuery(options, res, cb) {
     console.log("client is null: " + !client);
     client.query(options.sql, function (err, result, fields) {
         if (err) {
-            console.log(err);
+            console.log(JSON.stringify(err));
             throw err;
         }
-        res.write(JSON.stringify(result));
         cb(res, result);
     });
 }
 
 const createViewTable = function (res, result) {
+    let names = [];
+
     res.write("<table>");
     res.write("<tr>");
-    for (var field in result.fields) {
-        console.log(JSON.stringify(field));
-        res.write("<td><label>" + JSON.stringify(field) + "</label></td>");
+    for(let i = 0; i < result.fields.length; i++){
+        names[i] = result.fields[i].name;
+        res.write("<td><label>" + result.fields[i].name + "</label></td>");
     }
     res.write("</tr>");
-    /*
-    for(var row in result.rows){
-        res.write("<td><label>" + result[row][column] + "</label></td>");       
-    }
-    */
-    for (var row in result.rows) {
-        console.log(JSON.stringify(row));
-        res.write("<tr><label>" + JSON.stringify(row) + "</label></tr>");   
+    for (let i = 0; i < result.rows.length; i++) {
+        let row = result.rows[i];
+        
+        res.write("<tr>");
+        for(let j = 0; j < names.length; j++){
+            res.write("<td><label>" + row[names[j]] + "</label></td>");   
+        }
+        res.write("</tr>");
     }
     res.write("</table>");
     res.end();
