@@ -1,5 +1,7 @@
 var express = require('express');
+var dateFormat = require('dateformat');
 var app = express();
+app.use(express.static('public'));
 const psql = require('pg')
 const connectionString = "postgresql://admin:admin@psql:5432?sslmode=disable"
 const client = new psql.Client(connectionString);
@@ -39,8 +41,6 @@ function fetchAllOfType(res, type) {
     executeQuery(options, res, createViewTable);
 }
 
-
-
 function executeQuery(options, res, cb) {
     if (!options || !options.sql)
         throw (new Error('Invalid sql statement'));
@@ -57,23 +57,29 @@ function executeQuery(options, res, cb) {
 
 const createViewTable = function (res, result) {
     let names = [];
-
-    res.write("<table>");
-    res.write("<tr>");
-    for(let i = 0; i < result.fields.length; i++){
-        names[i] = result.fields[i].name;
-        res.write("<td><label>" + result.fields[i].name + "</label></td>");
+    res.write('<link rel="stylesheet" href="/mui.min.css" type="text/css">')
+    res.write("<table class='mui-table mui-table--bordered'>");
+    res.write("<thead><tr>");
+    for (let i = 0; i < result.fields.length; i++) {
+        names[i] = { name: result.fields[i].name, format: result.fields[i].format };
+        res.write("<th>" + result.fields[i].name + "</th>");
     }
-    res.write("</tr>");
+    res.write("</tr></thead>");
+    res.write("<tbody>");
     for (let i = 0; i < result.rows.length; i++) {
         let row = result.rows[i];
-        
+
         res.write("<tr>");
-        for(let j = 0; j < names.length; j++){
-            res.write("<td><label>" + row[names[j]] + "</label></td>");   
+        for (let j = 0; j < names.length; j++) {
+            let val = row[names[j].name];
+            if (names[j].format = 'date') {
+                val = dateFormat(Date.parse(val), "dd.mm.yyyy");
+            }
+            res.write("<td><label>" + val + "</label></td>");
         }
         res.write("</tr>");
     }
+    res.write("</tbody>");
     res.write("</table>");
     res.end();
 }
