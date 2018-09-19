@@ -2,7 +2,6 @@ version: '3'
 services:
   node:
     build: .
-    restart: always
     ports:
     - "3000:3000"
     volumes:
@@ -14,17 +13,14 @@ services:
         && nodemon app.js"
   psql:
     image: postgres:10
-    restart: always
     ports:
     - "5432:5432"
     volumes:
     - ./sql:/docker-entrypoint-initdb.d
     - ./sql_data:/var/lib/postgresql/data
+    - ./sql_log/:/var/log
     links:
     - node
     environment:
     - POSTGRES_PASSWORD=admin
     - POSTGRES_USER=admin
-    command: >
-      bash -c " cd /docker-entrypoint-initdb.d \
-        && ls"
