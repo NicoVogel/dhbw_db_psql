@@ -51,6 +51,7 @@ function executeQuery(options, res, cb) {
             console.log(err);
             throw err;
         }
+        res.write(JSON.stringify(result));
         cb(res, result);
     });
 }
@@ -59,7 +60,8 @@ const createViewTable = function (res, result) {
     res.write("<table>");
     res.write("<tr>");
     for (var field in result.fields) {
-        res.write("<td><label>" + field.name + "</label></td>");
+        console.log(JSON.stringify(field));
+        res.write("<td><label>" + JSON.stringify(field) + "</label></td>");
     }
     res.write("</tr>");
     /*
@@ -68,7 +70,8 @@ const createViewTable = function (res, result) {
     }
     */
     for (var row in result.rows) {
-        console.log(row);
+        console.log(JSON.stringify(row));
+        res.write("<tr><label>" + JSON.stringify(row) + "</label></tr>");   
     }
     res.write("</table>");
     res.end();
