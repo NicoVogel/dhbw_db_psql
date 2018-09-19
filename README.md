@@ -27,3 +27,7 @@ git clone https://github.com/NicoVogel/dhbw_db_psql
 ````docker
 docker-compose up
 ```` 
+
+## Side node
+
+Some parts are in German, because it was a requirement in the task.
