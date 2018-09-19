@@ -55,7 +55,7 @@ function executeQuery(options, res, cb) {
     });
 }
 
-function createViewTable(res, result){
+const createViewTable = function(res, result){
     res.write("<table>");
     res.write("<tr>");
     for(var column in result[0]){
