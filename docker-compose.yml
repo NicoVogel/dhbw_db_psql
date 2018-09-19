@@ -4,6 +4,8 @@ services:
     build: .
     ports:
     - "3000:3000"
+    links:
+    - psql
     volumes:
     - ./node:/node
     command: >
@@ -17,8 +19,6 @@ services:
     - "5432:5432"
     volumes:
     - ./sql:/docker-entrypoint-initdb.d
-    links:
-    - node
     environment:
     - POSTGRES_PASSWORD=admin
     - POSTGRES_USER=admin
