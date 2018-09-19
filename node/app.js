@@ -4,6 +4,8 @@ const psql = require('pg')
 const connectionString = "postgres://admin:admin@localhost:5432/demo"
 const client = new psql.Client(connectionString);
 
+
+
 app.get('/', function(req, res){
     res.send('die views sind unter der url /v1 bis /v4 zu finden');
 });
@@ -32,6 +34,7 @@ function fetchAllOfType(res, type){
     var options = {
        sql : 'SELECT * FROM ' + type
     }
+    console.log("query = " + options.sql);
     executeQuery(options, createViewTable);
 }
 
@@ -40,8 +43,13 @@ function fetchAllOfType(res, type){
 function executeQuery(options, res, cb) {
     if(!options || !options.sql)
         throw (new Error('Invalid sql statement')); 
+    
+    console.log("client is null: " + !client);
     client.query(options.sql, function (err, result, fields) {
-    if (err) throw err;
+    if (err) {
+        console.log(err);
+        throw err;
+    }
         cb(res, result);
     });
 }
