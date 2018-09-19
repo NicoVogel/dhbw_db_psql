@@ -23,5 +23,5 @@ services:
     - POSTGRES_PASSWORD=admin
     - POSTGRES_USER=admin
     command: >
-      bash -c " cd /sql \
+      bash -c " cd /docker-entrypoint-initdb.d \
         && ls"
