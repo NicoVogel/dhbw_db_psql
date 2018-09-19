@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 const psql = require('pg')
-const connectionString = "postgresql://admin:admin@postgres:5432/demo?sslmode=disable"
+const connectionString = "postgresql://admin:admin@psql:5432/demo?sslmode=disable"
 const client = new psql.Client(connectionString);
 client.connect();
 
