@@ -1,43 +1,29 @@
-# This project is from a DHBW Stuttgart Student for the database course
+# This project is from a DHBW Stuttgart student for the database course
 
-the code can be executed directly by using the following **dockerfile** and **docker-compose.yml**.
+This is a demo project which does start a **NodeJS** server which does show results from multiple **PostgreSQL** views.
 
-# Dockerfile
+The sql scripts are in the **sql** folder and the file *test_data.sql* contains test data which was randomly generated.
 
-````docker
-FROM node:latest
+The node server is locaded in the **node** folder. The *docker-compose.yml* does execute a *npm install* so everything is automated.
 
-RUN npm install npm@latest -g --quiet \
- && npm install nodemon -g --quiet
+To make things easyer **express** is also used.
+
+## Requirements
+
+Only the **docker** and **docker-compose** is needed to get the demo working.
+
+## How do is start it?
+
+1. clone the repository
+
+````shell
+git clone https://github.com/NicoVogel/dhbw_db_psql
 ````
 
-# docker-compose.yml
+2. open a shell and navigate into the *dhbw_db_psql* folder.
+
+3. execude the command *(ubuntu with sudo)*:
 
 ````docker
-version: '3'
-services:
-  node:
-    build: .
-    ports:
-    - "3000:3000"
-    volumes:
-    - .:/node
-    command: >
-      bash -c "rm -rf dhbw_db_psql \
-        && git clone https://github.com/NicoVogel/dhbw_db_psql.git \
-        && cd dhbw_db_psql \
-        && ls \
-        && npm install \
-        && nodemon app.js"
-  psql:
-    image: postgres:10
-    ports:
-    - "5432:5432"
-    volumes:
-    - .:/psql
-    links:
-    - node
-    environment:
-    - POSTGRES_PASSWORD=admin
-    - POSTGRES_USER=admin
-````
+docker-compose up
+```` 
