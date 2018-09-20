@@ -1,4 +1,3 @@
-FROM node:latest
+FROM node:10-alpine
 
-RUN npm install npm@latest -g --quiet \
- && npm install nodemon -g --quiet
+RUN npm install npm@latest -g --quiet

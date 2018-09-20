@@ -11,9 +11,9 @@ services:
     command: >
       bash -c " cd /node \
         && npm install \
-        && nodemon app.js"
+        && node app.js"
   psql:
-    image: postgres:10
+    image: postgres:10-alpine
     ports:
     - "5432:5432"
     volumes:
