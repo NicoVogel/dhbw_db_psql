@@ -6,7 +6,7 @@ drop view if exists arzt_overview_time;
 drop view if exists angestellten_overview;
 
 -- gibt alle ärzte mit der anzahl an behandelten patienten an
-create view arzt_overview as 
+create materialized view arzt_overview as 
 select person.nachname, person.vorname, fachgebiet.bezeichnung, count(patient.pid) as behandelte_patienten 
 from arzt 
 join angestellter on arzt.pid = angestellter.pid and angestellter.sub_type = 'a'
