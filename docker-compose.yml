@@ -9,7 +9,7 @@ services:
     volumes:
     - ./node:/node
     command: >
-      bash -c " cd /node \
+      /bin/sh -c " cd /node \
         && npm install \
         && node app.js"
   psql:
