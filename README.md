@@ -28,6 +28,13 @@ git clone https://github.com/NicoVogel/dhbw_db_psql
 docker-compose up
 ```` 
 
+> if the views are not loading, stop the doocker container and start them again with
+> ````docker
+> docker-compose stop
+> docker-compose up
+> ````
+> the reason is that the node server creates a connection to the postgresql before all the scripts are executed and the it uses an older version. a possible solution would be to add a *'sleep 5'* in the *docker-compose.yml* before the command *node app.js*
+
 ## Side node
 
 Some parts are in German, because it was a requirement in the task.
