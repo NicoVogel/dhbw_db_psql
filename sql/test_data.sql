@@ -103,9 +103,9 @@ insert into arzt select pid, 13 from person where vorname = 'Terry ' and nachnam
 
 
 -- ausbildung
-insert into ausbildung values (DEFAULT, 'helden');
-insert into ausbildung values (DEFAULT, 'kempfer');
-insert into ausbildung values (DEFAULT, 'chiller');
+insert into ausbildung values (DEFAULT, '-Held-');
+insert into ausbildung values (DEFAULT, '-Kämpfer-');
+insert into ausbildung values (DEFAULT, '-Chiller-');
 
 
 -- krankenpfleger
