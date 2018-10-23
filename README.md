@@ -8,6 +8,8 @@ The node server is locaded in the **node** folder. The *docker-compose.yml* does
 
 To make things easyer **express** is also used.
 
+The documents can be found in the **document** folder.
+
 ## Requirements
 
 Only the **docker** and **docker-compose** is needed to get the demo working.
