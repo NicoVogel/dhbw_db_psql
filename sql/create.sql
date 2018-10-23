@@ -8,7 +8,6 @@ drop table if exists hatsymptom;
 drop table if exists krankheit;
 drop table if exists symptom;
 drop table if exists patient;
-drop table if exists krankenkasse;
 drop table if exists krankenpfleger;
 drop table if exists ausbildung;
 drop table if exists arzt;
@@ -61,13 +60,9 @@ create table krankenpfleger(
 	ausbildung int not null references ausbildung (id),
 	primary key (pid)
 );
-create table krankenkasse(
-	id serial primary key,
-	bezeichnung text not null check(bezeichnung <> '')
-);
 create table patient(
 	pid int not null references person (pid),
-	krankenkasse int not null references krankenkasse (id),
+	krankenkasse text not null check(krankenkasse <> ''),
 	gewicht numeric(6,3) not null check(gewicht <> 0),
 	groesse numeric(5,2) not null check(groesse <> 0),
 	primary key (pid)

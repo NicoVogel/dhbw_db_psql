@@ -44,23 +44,17 @@ insert into adresse select pid, '68', 'Motzstr.', '55232', 'Ensheim' from person
 insert into adresse select pid, '19', 'Lange Strasse', '29690', 'Grethem' from person where vorname = 'Darla' and nachname = 'Bradley';
 
 
--- krankenkasse
-insert into krankenkasse values (DEFAULT, 'techniker' );
-insert into krankenkasse values (DEFAULT, 'aok' );
-insert into krankenkasse values (DEFAULT, 'bkk' );
-
-
 -- patient
-insert into patient select pid, 2, 66.0, 1.39  from person where vorname = 'Lynn' and nachname = 'Leonard';
-insert into patient select pid, 1, 55.0, 1.39  from person where vorname = 'Dwayne' and nachname = 'Franklin';
-insert into patient select pid, 1, 84.0, 1.87  from person where vorname = 'Erik' and nachname = 'Sutton';
-insert into patient select pid, 2, 55.0, 1.43  from person where vorname = 'Kate' and nachname = 'Larson';
-insert into patient select pid, 2, 96.0, 1.15  from person where vorname = 'Ronnie' and nachname = 'Copeland';
-insert into patient select pid, 3, 60.0, 1.12  from person where vorname = 'Emilio' and nachname = 'Lyons';
-insert into patient select pid, 1, 84.0, 1.29  from person where vorname = 'Dominic' and nachname = 'Robinson';
-insert into patient select pid, 2, 84.0, 1.43  from person where vorname = 'Misty' and nachname = 'Walters';
-insert into patient select pid, 3, 63.0, 1.35  from person where vorname = 'Geoffrey' and nachname = 'Doyle';
-insert into patient select pid, 3, 77.0, 2.17  from person where vorname = 'Darla' and nachname = 'Bradley';
+insert into patient select pid, 'aok', 66.0, 1.39  from person where vorname = 'Lynn' and nachname = 'Leonard';
+insert into patient select pid, 'techniker', 55.0, 1.39  from person where vorname = 'Dwayne' and nachname = 'Franklin';
+insert into patient select pid, 'techniker', 84.0, 1.87  from person where vorname = 'Erik' and nachname = 'Sutton';
+insert into patient select pid, 'aok', 55.0, 1.43  from person where vorname = 'Kate' and nachname = 'Larson';
+insert into patient select pid, 'aok', 96.0, 1.15  from person where vorname = 'Ronnie' and nachname = 'Copeland';
+insert into patient select pid, 'bkk', 60.0, 1.12  from person where vorname = 'Emilio' and nachname = 'Lyons';
+insert into patient select pid, 'techniker', 84.0, 1.29  from person where vorname = 'Dominic' and nachname = 'Robinson';
+insert into patient select pid, 'aok', 84.0, 1.43  from person where vorname = 'Misty' and nachname = 'Walters';
+insert into patient select pid, 'bkk', 63.0, 1.35  from person where vorname = 'Geoffrey' and nachname = 'Doyle';
+insert into patient select pid, 'bkk', 77.0, 2.17  from person where vorname = 'Darla' and nachname = 'Bradley';
 
 
 -- angestellter
