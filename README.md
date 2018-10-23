@@ -14,7 +14,7 @@ The documents can be found in the **document** folder.
 
 Only the **docker** and **docker-compose** is needed to get the demo working.
 
-## How do is start it?
+## How to start it?
 
 1. clone the repository
 
