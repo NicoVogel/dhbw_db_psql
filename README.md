@@ -1,42 +1,26 @@
-# This project is from a DHBW Stuttgart student for the database course
+# Demo implementation NodeJS and PostgreSQL
 
-This is a demo project which does start a **NodeJS** server which does show results from multiple **PostgreSQL** views.
-
-The sql scripts are in the **sql** folder and the file *test_data.sql* contains test data which was randomly generated.
-
-The node server is locaded in the **node** folder. The *docker-compose.yml* does execute a *npm install* so everything is automated.
-
-To make things easyer **express** is also used.
-
-The documents can be found in the **document** folder.
+The demo starts a **NodeJS** server which connects to a **PostgreSQL** database. All scripts in the `./sql` folder are execured on startup. The file `./sql/test_data.sql` contains randomly generated data. The node server is located in `./node`. This Demo was part of a database course and some futher documentation was part of the task. These documents are in the `./document` folder, but its written in german.
 
 ## Requirements
 
-Only the **docker** and **docker-compose** is needed to get the demo working.
+Your need **docker** and **docker-compose** to start the demo.
 
-## How to start it?
+## Getting started
 
-1. clone the repository
+Use the following commands to clone and start the demo.
 
-````shell
+```bash
 git clone https://github.com/NicoVogel/dhbw_db_psql
-````
-
-2. open a shell and navigate into the *dhbw_db_psql* folder.
-
-3. execude the command *(ubuntu with sudo)*:
-
-````docker
+cd dhbw_db_psql
 docker-compose up
-```` 
+```
 
-> if the views are not loading, stop the doocker container and start them again with
-> ````docker
-> docker-compose stop
-> docker-compose up
-> ````
-> the reason is that the node server creates a connection to the postgresql before all the scripts are executed and the it uses an older version. a possible solution would be to add a *'sleep 5'* in the *docker-compose.yml* before the command *node app.js*
+## Problems
 
-## Side node
+If the views do not load, please restart the docker containers.
 
-Some parts are in German, because it was a requirement in the task.
+```bash
+docker-compose stop
+docker-compose up
+```
